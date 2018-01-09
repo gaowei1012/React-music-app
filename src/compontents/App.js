@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from "react-router-dom"
 
-import logo from "../assets/imgs/logo.png";
-import '../assets/stylus/reset.styl'
-import './App.styl';
-
 import Recommend from "./recommend/Recommend";
 import Ranking from "./ranking/Ranking";
 import Search from "./search/Search";
+// import Player from "../containers/Player";
 
+import logo from "../assets/imgs/logo.png";
+import '../assets/stylus/reset.styl'
+import './App.styl';
 
 class App extends Component {
   render() {
@@ -43,6 +43,7 @@ class App extends Component {
             <Redirect from="/" to="/recommend" />
             <Route component={Recommend} />
           </Switch>
+          {/* <Player/> */}
         </div>
       </Router>
     );

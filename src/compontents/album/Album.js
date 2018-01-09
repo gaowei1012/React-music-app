@@ -1,18 +1,17 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import {connect} from "react-redux";
 import {CSSTransition} from "react-transition-group";
-import Album from "../compontents/album"
 
-import Header from "@common/header/Header";
-import Scroll from "@common/scroll/Scroll";
-import Loading from "@common/loading/Loading";
-
+import Header from "@/common/header/Header";
+import Scroll from "@/common/scroll/Scroll";
+import Loading from "@/common/loading/Loading";
 // import {getAlbumInfo} from "";
 import {getSongVkey} from "@/api/song";
-import {getAlbumInfo} from "@/api/recommend"
-import {CODE_SUCCESS} from "@/api/config"
-import * as AlbumModel from "@/model/album"
-import * as SongModel from "@/model/song"
+import {getAlbumInfo} from "@/api/recommend";
+import {CODE_SUCCESS} from "@/api/config";
+import * as AlbumModel from "@/model/album";
+import * as SongModel from "@/model/song";
 
 class Album extends React.Component {
     constructor(props) {
@@ -25,7 +24,7 @@ class Album extends React.Component {
             songs: [],
             refreshScroll: false
         };
-    }
+    };
 
     componentDidMount() {
         // 动画初始
@@ -68,6 +67,16 @@ class Album extends React.Component {
         });
     }
 
+    /**
+     * 选择歌曲
+     */
+    selectSong(song) {
+        return (e) => {
+            this.props.setSong([song]);
+            this.props.changeCurrentSong(song);
+        }
+    }
+
     /* 获取Vkey方法 */
     getSongUrl(song, mId) {
         getSongVkey(mId).then((res) => {
@@ -90,16 +99,19 @@ class Album extends React.Component {
     scroll = ({y}) => {
         let albumBgDOM = ReactDOM.findDOMNode(this.refs.albumBg);
         let albumFixedBgDOM = ReactDOM.findDOMNode(this.refs.albumFixedBg);
+        let playButtonWrapperDOM = ReactDOM.findDOMNode(this.refs.playButtonWrapper);
 
         if (y < 0) {
             if (Math.abs(y) + 55 > albumBgDOM.offsetHeight) {
                 albumFixedBgDOM.style.display = "block";
             } else {
                 albumFixedBgDOM.style.display = "none";
-                albumBgDOM.style["webkitTransform"] = transform;
-                albumBgDOM.style["transform"] = transform;
-                playButtonWrapperDOM.style.marginTop = `${y}px`; 
             }
+        } else {
+            let transform = `scale(${1 + y * 0.004}, ${1 + y * 0.004})`;
+            albumBgDOM.style["webkitTransform"] = transform;
+            albumBgDOM.style["transform"] = transform;
+            playButtonWrapperDOM.style.marginTop = `${y}px`; 
         }
     };
 

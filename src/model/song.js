@@ -2,7 +2,7 @@
  * 歌曲类模型
  * 
  */
-export class song {
+export class Song {
     constructor(id, mId, name, img, duration, url, singer) {
         this.id = id;
         this.mId = mId;
@@ -27,7 +27,7 @@ export function createSong(data) {
         `http://y.gtimg.cn/music/photo_new/T002R300x300M000${data.albummid}.jpg?max_age=2592000`,
         data.interval,
         "",
-        fliterSinger(singer)
+        fliterSinger(data.singer)
     )
 }
 
