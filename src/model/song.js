@@ -1,6 +1,5 @@
 /**
  * 歌曲类模型
- * 
  */
 export class Song {
     constructor(id, mId, name, img, duration, url, singer) {
@@ -15,9 +14,7 @@ export class Song {
 }
 
 /**
- * 
  * 创建歌曲对象函数
- * 
  */
 export function createSong(data) {
     return new Song(
@@ -27,11 +24,11 @@ export function createSong(data) {
         `http://y.gtimg.cn/music/photo_new/T002R300x300M000${data.albummid}.jpg?max_age=2592000`,
         data.interval,
         "",
-        fliterSinger(data.singer)
+        filterSinger(data.singer)
     )
 }
 
-function fliterSinger(singers) {
+function filterSinger(singers) {
     let singerArray = singers.map(singer => {
         return singer.name
     });

@@ -13,7 +13,7 @@ export function getCarousel() {
         _: new Date().getTime()
     });
     return jsonp(URL.carousel, data, OPTION);
-};
+}
 
 // 获取轮播图方法
 export function getNewAlbum() {
@@ -33,7 +33,7 @@ export function getNewAlbum() {
     };
 
     return jsonp(URL.newalbum, data, option);
-};
+}
 
 // 获取专辑方法
 export function getAlbumInfo(albumMid) {
@@ -45,4 +45,4 @@ export function getAlbumInfo(albumMid) {
         needNewCode: 0
     });
     return jsonp(URL.albumInfo, data, OPTION);
-};
+}

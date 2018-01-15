@@ -1,5 +1,5 @@
 import React from "react";
-import {Route} from "react-router-dom";
+//import {Route} from 'react-router-dom';
 import LazyLoad, {forceCheck} from "react-lazyload";
 import Swiper from "swiper";
 import Scroll from "@/common/scroll/Scroll";
@@ -8,8 +8,8 @@ import * as AlbumModel from "@/model/album";
 
 import {getCarousel, getNewAlbum} from "@/api/recommend";
 import {CODE_SUCCESS} from "@/api/config";
-import Album from "@/containers/Album";
-// import Album from "@compontents/album/Album"
+//import Album from "@/containers/Album";
+//import Album from "@compontents/album/Album"
 
 import "./recommend.styl";
 import "swiper/dist/css/swiper.css";
@@ -28,6 +28,7 @@ class Recommend extends React.Component {
     }
     
     componentDidMount() {
+         //获取轮播图
         getCarousel().then((res) => {
             console.log('获取轮播:');
             if (res) {
@@ -42,14 +43,14 @@ class Recommend extends React.Component {
                                 loop: true,
                                 autoplay: 3000,
                                 autoplayDisableOnInteraction: false,
-                                pagination: 'swiper-pagination'
+                                pagination: '.swiper-pagination'
                             });
                         }
                     });
                 }
             }
         });
-
+        // 获取最新专辑
         getNewAlbum().then((res) => {
             console.log('获取最新专辑');
             if (res) {
@@ -92,13 +93,15 @@ class Recommend extends React.Component {
     render() {
         let {match} = this.props;
         let albums = this.state.newAlbums.map(item => {
-            // 通过函数创建专辑对象
+            // 通过函 数创建专辑对象
             let album = AlbumModel.createAlbumByList(item);
             return (
                 <div className="album-wrapper" key={album.mId}
-                onClick={this.toAlbumDetail(`${match.url + '/' + album.mId}`)}>
+                    onClick={this.toAlbumDetail(`${match.url + '/' + album.mId}`)}
+
+                >
                     <div className="left">
-                        <LazyLoad>
+                        <LazyLoad height={60}>
                             <img src={album.img} width="100%" height="100%" alt={album.name}/>
                         </LazyLoad>
                     </div>
@@ -148,8 +151,9 @@ class Recommend extends React.Component {
                     </div>
                     </div>
                 </Scroll>
-                <Loading title="正在加载..." show={this.state.Loading}></Loading>
+                <Loading title="正在加载..." show={this.state.Loading}> </Loading>
                 {/* <Route path={`${match.url + '/:id'}`} component={Album} /> */}
+                { /*<Route path={`${match.url + '/:id'}`} component={Album}/> */}
             </div>
         );
     };

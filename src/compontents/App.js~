@@ -5,7 +5,7 @@ import Recommend from "./recommend/Recommend";
 import Ranking from "./ranking/Ranking";
 import Search from "./search/Search";
 // import Player from "../containers/Player";
-//import MusicPlayer from "./paly/MiniPlayer";
+import MusicPlayer from "./paly/MiniPlayer";
 
 import logo from "../assets/imgs/logo.png";
 import '../assets/stylus/reset.styl'
@@ -44,6 +44,7 @@ class App extends Component {
             <Redirect from="/" to="/recommend" />
             <Route component={Recommend} />
           </Switch>
+          <MusicPlayer />
         </div>
       </Router>
     );
