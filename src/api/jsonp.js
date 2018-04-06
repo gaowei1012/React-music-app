@@ -7,7 +7,6 @@ import originJsonp from "jsonp";
  * @param {option} option 
  */
 let jsonp = (url, data, option) => {
-
     return new Promise((resolve, reject) => {
         originJsonp(buildUrl(url, data), option, (err, data) => {
             if (!err) {

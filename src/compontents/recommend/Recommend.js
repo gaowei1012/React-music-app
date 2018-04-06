@@ -1,5 +1,5 @@
 import React from "react";
-//import {Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import LazyLoad, {forceCheck} from "react-lazyload";
 import Swiper from "swiper";
 import Scroll from "@/common/scroll/Scroll";
@@ -8,8 +8,8 @@ import * as AlbumModel from "@/model/album";
 
 import {getCarousel, getNewAlbum} from "@/api/recommend";
 import {CODE_SUCCESS} from "@/api/config";
-//import Album from "@/containers/Album";
-//import Album from "@compontents/album/Album"
+// import Album from "@/containers/Album";
+import Album from "../album/Album"
 
 import "./recommend.styl";
 import "swiper/dist/css/swiper.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.styl";
 
-class MusicHeader extends React.Component {
+class Header extends React.Component {
     
     // 返回上级菜单
     handleClick() {
@@ -22,4 +22,4 @@ class MusicHeader extends React.Component {
     }
 }
 
-export default MusicHeader
+export default Header

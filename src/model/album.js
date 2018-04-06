@@ -1,7 +1,6 @@
 /**
  * 专辑类模型
  */
-
  export class Album {
      constructor(id, mId, name, img, singer, publicTime) {
          this.id = id;

@@ -2,7 +2,7 @@ import jsonp from "./jsonp";
 import {URL, PARAM, OPTION} from "./config";
 
 /**
- * 
+ * getCarousel
  */
 export function getCarousel() {
     const data = Object.assign({}, PARAM, {
