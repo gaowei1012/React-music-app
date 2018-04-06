@@ -2,8 +2,7 @@ import React from "react";
 import "./header.styl";
 
 class Header extends React.Component {
-    
-    // 返回上级菜单
+
     handleClick() {
         // 返回
         window.history.back();
