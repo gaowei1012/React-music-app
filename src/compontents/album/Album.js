@@ -1,12 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { CSSTransition } from 'react-transition-group'
 
 import Header from '../../common/header/Header'
 import Scroll from '../../common/scroll/Scroll'
 import Loading from '../../common/loading/Loading'
 
-import {getAlbumInfo} from '../../api/recommend'
-import {CODE_SUCCESS} from '../../api/config'
+import { getAlbumInfo } from '../../api/recommend'
+import { getSongVkey } from '../../api/song'
+import { CODE_SUCCESS } from '../../api/config'
 import * as AlbumModel from '../../model/album'
 import * as SongModel from '../../model/song'
 
@@ -19,6 +21,7 @@ class Album extends Component {
         super(props)
 
         this.state = {
+            show: false,
             loading: true,
             album: {},
             songs: [],
@@ -47,17 +50,34 @@ class Album extends Component {
                         song.push(song)
                     })
                     this.setState({
+                        show: true,
                         loading: false,
                         album: album,
                         songs: songs
                     }, () => {
                         //刷新 scroll
-                        this.setState({refreshScroll: true})
+                        this.setState({ refreshScroll: true })
                     })
                 }
-            } 
+            }
         })
     }
+
+    // 获取歌曲vkey
+    getSongUrl(song, mId) {
+        getSongVkey(mId).then((res) => {
+            if (res) {
+                if (res.code === CODE_SUCCESS) {
+                    if (res.data.items) {
+                        let item = res.data.items[0]
+                        song.url = `http://dl.stream.qqmusic.qq.com/${item.filename}?vkey=${item.vkey}&guid=3655047200&fromtag=66`
+                    }
+                }
+            }
+        })
+    }
+
+
 
     render() {
         let album = this.state.album
@@ -70,42 +90,44 @@ class Album extends Component {
             )
         })
         return (
-            <div className="music-album">
-                <Header title={album.name} ref="header"></Header>
-                <div style={{position: "relative"}}>
-                    <div ref="albumBg" className="album-img" style={{backgroundImage: `url(${album.img}`}}>
-                        <div className="filter"></div>
-                    </div>
-                    <div ref="albumFixedBg" className="album-img fiexd" style={{backgroundImage: `url(${album.img})`}}>
-                        <div className="filter"></div>                        
-                    </div>
-                    <div className="play-wrapper" ref="playButtonWrapper">
-                        <div className="play-button">
-                            <i className="icon-play"></i>
-                            <span>播放全部</span>
+            <CSSTransition in={this.state.show} timeout={300}>
+                <div className="music-album">
+                    <Header title={album.name} ref="header"></Header>
+                    <div style={{ position: "relative" }}>
+                        <div ref="albumBg" className="album-img" style={{ backgroundImage: `url(${album.img}` }}>
+                            <div className="filter"></div>
+                        </div>
+                        <div ref="albumFixedBg" className="album-img fiexd" style={{ backgroundImage: `url(${album.img})` }}>
+                            <div className="filter"></div>
+                        </div>
+                        <div className="play-wrapper" ref="playButtonWrapper">
+                            <div className="play-button">
+                                <i className="icon-play"></i>
+                                <span>播放全部</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div ref="albumContainer" className="album-container">
-                    <div className="album-scroll" style={this.state.loading === true ? {display: "node"}: {}}>
-                        <Scroll refresh={this.state.refreshScroll}>
-                            <div className="album-wrapper">
-                                <div className="song-count">专辑 共{this.lenght}首</div>
-                                <div className="song-list">
-                                    {songs}
-                                </div>
-                                <div className="album-info" style={album.desc ? {} : {display: "none"}}>
-                                    <h1 className="album-title">专辑简介</h1>
-                                    <div className="album-desc">
-                                        {album.desc}
+                    <div ref="albumContainer" className="album-container">
+                        <div className="album-scroll" style={this.state.loading === true ? { display: "node" } : {}}>
+                            <Scroll refresh={this.state.refreshScroll}>
+                                <div className="album-wrapper">
+                                    <div className="song-count">专辑 共{this.lenght}首</div>
+                                    <div className="song-list">
+                                        {songs}
+                                    </div>
+                                    <div className="album-info" style={album.desc ? {} : { display: "none" }}>
+                                        <h1 className="album-title">专辑简介</h1>
+                                        <div className="album-desc">
+                                            {album.desc}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Scroll>
+                            </Scroll>
+                        </div>
+                        <Loading title="正在加载中..." show={this.state.loading}></Loading>
                     </div>
-                    <Loading title="正在加载中..." show={this.state.loading}></Loading>
                 </div>
-            </div>
+            </CSSTransition>
         );
     }
 }
