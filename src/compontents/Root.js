@@ -1,13 +1,13 @@
-import React from "react";
-import { Provider } from "react-redux";
-import store from "../redux/store";
-import App from "./App";
+import React, { Component }from 'react'
+import { Provider } from 'react-redux'
+import store from '../redux/store'
+import App from './App'
 
-class Root extends React.Component {
+class Root extends Component {
     render() {
-        return(
+        return (
             <Provider store={store}>
-                <App/>
+                <App />
             </Provider>
         );
     }
