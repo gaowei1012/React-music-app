@@ -8,8 +8,8 @@ import * as AlbumModel from "@/model/album";
 
 import {getCarousel, getNewAlbum} from "@/api/recommend";
 import {CODE_SUCCESS} from "@/api/config";
-// import Album from "@/containers/Album";
-import Album from "../album/Album"
+import Album from "@/containers/Album";
+// import Album from "../album/Album"
 
 import "./recommend.styl";
 import "swiper/dist/css/swiper.css";
