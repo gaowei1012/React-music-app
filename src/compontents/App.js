@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from "react-r
 import Recommend from "./recommend/Recommend";
 import Ranking from "./ranking/Ranking";
 import Search from "./search/Search";
-// import Player from "../containers/Player";
+import Player from "../containers/Player";
 //import MusicPlayer from "./paly/MiniPlayer";
 
 import logo from "../assets/imgs/logo.png";
@@ -35,6 +35,9 @@ class App extends Component {
               <NavLink to="/search" className="nav-link">
                 <span>搜索</span>
               </NavLink>
+          </div>
+          <div className="music-view">
+            <Player />
           </div>
         </div>
           <Switch>
