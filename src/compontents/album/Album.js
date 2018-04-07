@@ -11,6 +11,7 @@ import { getSongVkey } from '../../api/song'
 import { CODE_SUCCESS } from '../../api/config'
 import * as AlbumModel from '../../model/album'
 import * as SongModel from '../../model/song'
+import { getTransitionEndName } from '../../util/event'
 
 import './album.styl'
 
