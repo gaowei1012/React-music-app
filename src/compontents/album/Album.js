@@ -83,7 +83,7 @@ class Album extends Component {
     scroll = ({ y }) => {
         let albumBgDOM = ReactDOM.findDOMNode(this.refs.albumBg)
         let albumFixedBgDOM = ReactDOM.findDOMNode(this.refs.albumFixedBg)
-
+        let playButtonWrapperDOM = ReactDOM.findDOMNode(this.refs.playButtonWrapper)
         if (y < 0) {
             if (Math.abs(y) + 55 > albumBgDOM.offsetHeight) {
                 albumFixedBgDOM.style.display = 'block'
@@ -91,7 +91,7 @@ class Album extends Component {
                 albumFixedBgDOM.style.display = 'none'
             }
         } else {
-            let transfrom = `scale(${1 + y * 0.004}, ${1 + y * 0.004})`
+            let transform = `scale(${1 + y * 0.004}, ${1 + y * 0.004})`
             albumBgDOM.style["webkitTransform"] = transform
             albumBgDOM.style["transform"] = transform
             playButtonWrapperDOM.style.marginTop = `${y}px`
