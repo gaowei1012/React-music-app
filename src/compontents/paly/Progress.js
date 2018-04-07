@@ -6,11 +6,8 @@ import './progress.styl'
 
 
 class Progress extends Component {
-
 	constructor(props) {
 		super(props)
-
-
 	}
 
 	componentDidUpdate() {

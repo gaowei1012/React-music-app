@@ -87,6 +87,17 @@ class Album extends Component {
         };
     }
 
+    /**
+     * 播放全部
+     */
+    playAll = () => {
+        if (this.state.songs.length > 0) {
+            // 添加播放歌曲列表
+            this.props.setSongs(this.state.songs);
+            this.props.changeCurrentSong(this.state.songs[0]);
+            this.props.showMusicPlayer(true)
+        }
+    }
 
 
     /**
@@ -134,7 +145,7 @@ class Album extends Component {
                             <div className="filter"></div>
                         </div>
                         <div className="play-wrapper" ref="playButtonWrapper">
-                            <div className="play-button">
+                            <div className="play-button" onClick={this.playAll}>
                                 <i className="icon-play"></i>
                                 <span>播放全部</span>
                             </div>
