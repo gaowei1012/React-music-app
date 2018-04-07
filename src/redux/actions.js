@@ -2,9 +2,7 @@
 import * as ActionTypes from "./actionTypes";
 
 /**
- *
- *  action 是把数据从应用中传到store的有效载荷, 它是store数据的唯一来源
- * 
+ *  action 是把数据从应用中传到store的有效载荷, 它是store数据的唯一来源 
  */
 
  export function showPlayer(showStatus) {
