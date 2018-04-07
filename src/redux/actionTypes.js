@@ -1,4 +1,8 @@
 
+/**
+ *  数据类型
+ */
+
 /* 显示或隐藏播放页面 */
 export const SHOW_PLAYER = "SHOW_PALYER";
 
