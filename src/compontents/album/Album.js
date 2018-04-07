@@ -78,6 +78,18 @@ class Album extends Component {
     }
 
     /**
+     * 选择歌曲
+     */
+    selectSong(song) {
+        return (e) => {
+            this.props.setSongs([song])
+            this.props.changeCurrentSong(song)
+        };
+    }
+
+
+
+    /**
      * 监听Scroll
      */
     scroll = ({ y }) => {
@@ -104,7 +116,7 @@ class Album extends Component {
         let album = this.state.album
         let songs = this.state.songs.map((song) => {
             return (
-                <div className="song">
+                <div className="song" key={song.id} onClick={this.selectSong(song)}>
                     <div className="song-name">{song.name}</div>
                     <div className="song-singer">{song.singer}</div>
                 </div>
