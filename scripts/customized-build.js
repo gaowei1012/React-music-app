@@ -68,5 +68,4 @@ function rewireModule(modulePath, customizer) {
   // modify that reference.
   let config = defaults.__get__('config');
   customizer(config);
-
 }
