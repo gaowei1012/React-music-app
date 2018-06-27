@@ -1,7 +1,13 @@
 import React from "react"
 import "./header.styl"
 
+/**
+ * 公用的header组件
+ */
 class MusicHeader extends React.Component {
+    /**
+	 *  返回上一级菜单
+     */
 	handleClick() {
 		window.history.back();
 	}

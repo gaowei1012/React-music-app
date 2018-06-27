@@ -1,6 +1,11 @@
 import jsonp from "./jsonp"
 import {URL, PARAM, OPTION} from "./config"
 
+/**
+ *
+ *
+ * @returns {Promise<any>}
+ */
 export function getCarousel() {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 701075963,
@@ -34,6 +39,11 @@ export function getNewAlbum() {
 	return jsonp(URL.newalbum, data, OPTION);
 }*/
 
+/**
+ *
+ *
+ * @returns {Promise<any>}
+ */
 export function getNewAlbum() {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 1278911659,
@@ -52,6 +62,12 @@ export function getNewAlbum() {
 	return jsonp(URL.newalbum, data, option);
 }
 
+/**
+ *
+ *
+ * @param albumMid
+ * @returns {Promise<any>}
+ */
 export function getAlbumInfo(albumMid) {
 	const data = Object.assign({}, PARAM, {
 		albummid: albumMid,

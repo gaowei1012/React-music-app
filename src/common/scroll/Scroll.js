@@ -4,6 +4,9 @@ import PropTypes from "prop-types"
 import BScroll from "better-scroll"
 import "./scroll.styl"
 
+/**
+ * scroll 组件
+ */
 class Scroll extends React.Component {
 	componentDidUpdate() {
 		//组件更新后，如果实例化了better-scroll并且需要刷新就调用refresh()函数

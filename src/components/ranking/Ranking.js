@@ -13,6 +13,8 @@ import "./ranking.styl"
 class Ranking extends React.Component {
 	constructor(props) {
 		super(props);
+		// props
+		console.log(props)
 
 		this.state = {
 			loading: true,

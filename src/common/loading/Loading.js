@@ -2,6 +2,9 @@ import React from "react"
 import loadingImg from "./loading.gif"
 import "./loading.styl"
 
+/**
+ * loading 组件
+ */
 class Loading extends React.Component {
 	render() {
 		let displayStyle = this.props.show === true ? 

@@ -1,6 +1,11 @@
 import jsonp from "./jsonp"
 import {URL, PARAM, OPTION} from "./config"
 
+/**
+ *
+ *
+ * @returns {Promise<any>}
+ */
 export function getHotKey() {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,
@@ -14,6 +19,12 @@ export function getHotKey() {
 	return jsonp(URL.hotkey, data, OPTION);
 }
 
+/**
+ *
+ *
+ * @param w
+ * @returns {Promise<any>}
+ */
 export function search(w) {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,

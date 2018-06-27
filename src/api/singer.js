@@ -1,6 +1,13 @@
 import jsonp from "./jsonp"
 import {URL, PARAM, OPTION} from "./config"
 
+/**
+ *
+ *
+ * @param pageNum
+ * @param key
+ * @returns {Promise<any>}
+ */
 export function getSingerList(pageNum, key) {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,
@@ -17,6 +24,12 @@ export function getSingerList(pageNum, key) {
 	return jsonp(URL.singerList, data, OPTION);
 }
 
+/**
+ *
+ *
+ * @param mId
+ * @returns {Promise<any>}
+ */
 export function getSingerInfo(mId) {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,

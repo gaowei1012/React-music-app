@@ -1,6 +1,11 @@
 import jsonp from "./jsonp"
 import {URL, PARAM, OPTION} from "./config"
 
+/**
+ *
+ *
+ * @returns {Promise<any>}
+ */
 export function getRankingList() {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,
@@ -12,6 +17,12 @@ export function getRankingList() {
 	return jsonp(URL.rankingList, data, OPTION);
 }
 
+/**
+ *
+ *
+ * @param topId
+ * @returns {Promise<any>}
+ */
 export function getRankingInfo(topId) {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 5381,

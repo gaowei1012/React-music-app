@@ -1,6 +1,12 @@
 import jsonp from "./jsonp"
 import {URL, PARAM} from "./config"
 
+/**
+ *
+ *
+ * @param songMid
+ * @returns {Promise<any>}
+ */
 export function getSongVKey(songMid) {
 	const data = Object.assign({}, PARAM, {
 		g_tk: 1278911659,
